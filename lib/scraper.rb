@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
+
 
 require_relative './course.rb'
 
@@ -16,7 +18,40 @@ class Scraper
     end
   end
   
+  def get_page
+    doc = Nokogiri::HTML(open("http://learn-co-curriculum.github.io/site-for-scraping/courses"))
+  end
+ 
+    def get_courses
+     self.get_page.css(".post")
+    end
+ 
+ 
+ 
+ 
+ # For each iteration over the collection of Nokogiri XML elements returned to us by the doc.css(".post") line, we are making a new instance of the Course class and giving that instance the title, schedule and description extracted from the XML.
+  
+    def make_courses
+    self.get_courses.each do |post|
+      course = Course.new
+      course.title = post.css("h2").text
+      course.schedule = post.css(".date").text
+      course.description = post.css("p").text
+      
+# ----binding.pry
+# TERMINAL:
+# ruby lib/scraper.rb
+# Course.all
+
+#   @description=
+#   "An intensive, Ruby and Javascript course that teaches the skills necessary to start a career as a full-stack software developer.",
+#  @schedule="Full-Time",
+#  @title="Web Development Immersive">]      
+      
+    end
+  end
+
 end
 
 
-
+# Scraper.new.print_courses
