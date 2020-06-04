@@ -159,7 +159,7 @@ end
 ```
 
 Notice that we are already requiring Nokogiri, open-uri and Pry at the top of
-the file. We are ready to us Nokogiri and open-uri to get our HTML. Add the
+the file. We are ready to use Nokogiri and open-uri to get our HTML. Add the
 following line to your `.get_page` method:
 
 ```ruby
@@ -217,7 +217,7 @@ Click on [this link][] and once again scroll down to the section of the page
 that lists the course offerings. Right click on any course offering and select
 "inspect element". You should see something like this in your browser:
 
-[this link]: http://learn-co-curriculum.github.io/site-for-scraping/courses
+[this link]: http   ://learn-co-curriculum.github.io/site-for-scraping/courses
 
 ![inspect element browser console](http://readme-pics.s3.amazonaws.com/Screen%20Shot%202015-08-20%20at%204.38.49%20PM.png)
 
