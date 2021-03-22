@@ -6,18 +6,19 @@ require 'open-uri'
 
 require_relative './course.rb'
 
-class Scraper
+class Scraper 
+  
   def get_page
-    html = open('http://learn-co-curriculum.github.io/site-for-scraping/courses') 
+    #html = open('http://learn-co-curriculum.github.io/site-for-scraping/courses') 
     #this holds the html code in this variable called html
-    
+    Course.reset_all
     doc = Nokogiri::HTML(open('http://learn-co-curriculum.github.io/site-for-scraping/courses')) 
     
     #this turns the html into nodes 
      
     # doc.css(".post").each do |post|
     #   #we use a dot before post because this is a class name 
-      course = Course.new
+  
     #   course.title = post.css("h2").text
     #   course.schedule = post.css(".date").text
     #   course.description = post.css("p").text
@@ -27,14 +28,12 @@ class Scraper
   
   
   def get_courses 
-    self.get_page 
     self.get_page.css(".post")
   end 
   
- 
- def make_courses
-   self.get_courses.each do |post| 
-    course = Course.new
+  def make_courses
+   self.get_courses.each do |post|
+     course = Course.new
     #do not need to establish that course is a [] because this is created in the course file.
     course.title = post.css("h2").text
     course.schedule = post.css(".date").text
