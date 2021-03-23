@@ -7,9 +7,9 @@ describe "Scraper" do
 
   describe "#get_page" do
     it "uses Nokogiri to get the HTML from a web page" do
-     L::Docu doc = scraper.get_page
+     doc = scraper.get_page
       expect{scraper.get_page}.to_not raise_error
-      expect(doc).to be_a(Nokogiri::HTMment)
+      expect(doc).to be_a(Nokogiri::HTML::Document) 
     end
   end
 
